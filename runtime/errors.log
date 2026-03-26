@@ -1,0 +1,62 @@
+{"time":"2026-03-09T18:04:07.238Z","message":"EVENT_ERROR","error":{"eventId":"xumj453y","event":"device.action","error":"tuyaService.toggle is not a function"}}
+{"time":"2026-03-09T18:08:06.917Z","message":"EVENT_ERROR","error":{"eventId":"zglaljw8","event":"device.action","error":"tuyaService.toggle is not a function"}}
+{"time":"2026-03-09T18:08:13.308Z","message":"EVENT_ERROR","error":{"eventId":"8hcmz82d","event":"device.action","error":"tuyaService.toggle is not a function"}}
+{"time":"2026-03-09T18:15:21.906Z","message":"EVENT_ERROR","error":{"eventId":"t6p3gcye","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:19:18.670Z","message":"EVENT_ERROR","error":{"eventId":"ixsgqf05","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:20:04.105Z","message":"EVENT_ERROR","error":{"eventId":"21wfljwf","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:25:58.876Z","message":"EVENT_ERROR","error":{"eventId":"v9shm4fm","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:31:24.276Z","message":"EVENT_ERROR","error":{"eventId":"guy8zdnt","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:31:49.385Z","message":"EVENT_ERROR","error":{"eventId":"a95cohel","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:33:16.156Z","message":"EVENT_ERROR","error":{"eventId":"iukvq8sq","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:38:28.733Z","message":"EVENT_ERROR","error":{"eventId":"u0z34row","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:38:38.060Z","message":"EVENT_ERROR","error":{"eventId":"8ywlmk8y","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:39:22.362Z","message":"EVENT_ERROR","error":{"eventId":"1tt77u8f","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:39:25.969Z","message":"EVENT_ERROR","error":{"eventId":"j1r04gtu","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:42:27.727Z","message":"EVENT_ERROR","error":{"eventId":"37xbcybn","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:46:27.529Z","message":"EVENT_ERROR","error":{"eventId":"6ro3d0a0","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:46:41.187Z","message":"EVENT_ERROR","error":{"eventId":"fdz4x5oj","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:46:48.562Z","message":"EVENT_ERROR","error":{"eventId":"bvupm21c","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:47:04.829Z","message":"EVENT_ERROR","error":{"eventId":"f2tm4gqi","event":"device.action","error":"foundDevice is not defined"}}
+{"time":"2026-03-09T18:49:36.823Z","message":"EVENT_ERROR","error":{"eventId":"7mb5zocw","event":"device.action","error":"Device not found"}}
+{"time":"2026-03-19T13:16:30.067Z","message":"EVENT_ERROR","error":{"processId":5,"event":"device.action","payload":{"id":"master","action":"toggle","source":"api"},"error":"Device not found","duration_ms":2}}
+{"time":"2026-03-19T13:17:59.991Z","message":"EVENT_ERROR","error":{"processId":10,"event":"device.action","payload":{"id":"kitchen","action":"toggle","source":"api"},"error":"Device not found","duration_ms":2}}
+{"time":"2026-03-19T13:26:17.668Z","message":"EVENT_ERROR","error":{"processId":1,"event":"device.action","payload":{"id":"main","action":"toggle","source":"api"},"error":"result is not defined","duration_ms":1998}}
+{"time":"2026-03-19T13:28:22.863Z","message":"EVENT_ERROR","error":{"processId":1,"event":"device.action","payload":{"id":"main","action":"toggle","source":"api"},"error":"result is not defined","duration_ms":2102}}
+{"time":"2026-03-19T13:28:24.641Z","message":"EVENT_ERROR","error":{"processId":2,"event":"device.action","payload":{"id":"main","action":"toggle","source":"api"},"error":"result is not defined","duration_ms":1350}}
+{"time":"2026-03-19T13:48:09.595Z","message":"EVENT_ERROR","error":{"processId":1,"event":"device.action","payload":{"id":"main","action":"toggle","source":"api"},"error":"result is not defined","duration_ms":2282}}
+{"time":"2026-03-19T13:49:03.547Z","message":"EVENT_ERROR","error":{"processId":2,"event":"device.action","payload":{"id":"main","action":"toggle","source":"api"},"error":"result is not defined","duration_ms":1878}}
+{"time":"2026-03-19T13:56:44.042Z","message":"EVENT_ERROR","error":{"processId":1,"event":"device.action","payload":{"id":"main","action":"toggle","source":"api"},"error":"result is not defined","duration_ms":2076}}
+{"time":"2026-03-19T13:56:50.041Z","message":"EVENT_ERROR","error":{"processId":2,"event":"device.action","payload":{"id":"main","action":"state","source":"api"},"error":"Invalid Action","duration_ms":3}}
+{"time":"2026-03-19T13:56:55.066Z","message":"EVENT_ERROR","error":{"processId":3,"event":"device.action","payload":{"id":"main","action":"state","source":"api"},"error":"Invalid Action","duration_ms":2}}
+{"time":"2026-03-19T15:24:08.033Z","message":"EVENT_ERROR","error":{"processId":8,"room":"master","device":"main","action":"state","error":"Invalid Action: state","duration_ms":31}}
+{"time":"2026-03-19T15:24:13.326Z","message":"EVENT_ERROR","error":{"processId":9,"room":"master","device":"main","action":"state","error":"Invalid Action: state","duration_ms":2}}
+{"time":"2026-03-19T15:24:15.312Z","message":"EVENT_ERROR","error":{"processId":11,"room":"master","device":"main","action":"state","error":"Invalid Action: state","duration_ms":1}}
+{"time":"2026-03-19T15:30:48.485Z","message":"EVENT_ERROR","error":{"processId":12,"room":"master","device":"main","action":"state","error":"Invalid Action: state","duration_ms":1}}
+{"time":"2026-03-19T15:30:51.458Z","message":"EVENT_ERROR","error":{"processId":14,"room":"master","device":"main","action":"state","error":"Invalid Action: state","duration_ms":2}}
+{"time":"2026-03-19T15:30:56.053Z","message":"EVENT_ERROR","error":{"processId":16,"room":"master","device":"main","action":"state","error":"Invalid Action: state","duration_ms":1}}
+{"time":"2026-03-19T15:30:59.294Z","message":"EVENT_ERROR","error":{"processId":18,"room":"master","device":"main","action":"state","error":"Invalid Action: state","duration_ms":1}}
+{"time":"2026-03-19T15:31:02.165Z","message":"EVENT_ERROR","error":{"processId":20,"room":"master","device":"main","action":"state","error":"Invalid Action: state","duration_ms":1}}
+{"time":"2026-03-19T15:37:49.205Z","message":"EVENT_ERROR","error":{"processId":22,"room":"master","device":"main","action":"state","error":"Invalid Action: state","duration_ms":1}}
+{"time":"2026-03-19T15:37:52.618Z","message":"EVENT_ERROR","error":{"processId":24,"room":"master","device":"main","action":"state","error":"Invalid Action: state","duration_ms":1}}
+{"time":"2026-03-19 20:12:14","message":"EVENT_ERROR","error":{"processId":67,"room":"master","device":"main","action":"toggle","error":"Cannot read properties of undefined (reading 'find')","duration_ms":929}}
+{"time":"2026-03-19 20:12:34","message":"EVENT_ERROR","error":{"processId":68,"room":"master","device":"main","action":"toggle","error":"Cannot read properties of undefined (reading 'find')","duration_ms":696}}
+{"time":"2026-03-19 20:14:36","message":"EVENT_ERROR","error":{"processId":69,"room":"master","device":"main","action":"toggle","error":"Cannot read properties of undefined (reading 'find')","duration_ms":1024}}
+{"time":"2026-03-19 21:00:36","message":"EVENT_ERROR","error":{"processId":121,"room":"master","device":"main","action":"toggle","error":"status is not defined","duration_ms":3043}}
+{"time":"2026-03-19 21:00:43","message":"EVENT_ERROR","error":{"processId":122,"room":"master","device":"main","action":"toggle","error":"status is not defined","duration_ms":2131}}
+{"time":"2026-03-19 21:03:03","message":"EVENT_ERROR","error":{"processId":123,"room":"master","device":"main","action":"toggle","error":"status is not defined","duration_ms":3528}}
+{"time":"2026-03-19 21:03:07","message":"EVENT_ERROR","error":{"processId":124,"room":"master","device":"main","action":"toggle","error":"status is not defined","duration_ms":2607}}
+{"time":"2026-03-19 21:03:09","message":"EVENT_ERROR","error":{"processId":125,"room":null,"device":"main","action":"toggle","error":"status is not defined","duration_ms":1196}}
+{"time":"2026-03-19 21:03:12","message":"EVENT_ERROR","error":{"processId":126,"room":null,"device":"main","action":"toggle","error":"status is not defined","duration_ms":1144}}
+{"time":"2026-03-19 21:07:00","message":"EVENT_ERROR","error":{"processId":127,"room":"master","device":"main","action":"toggle","error":"status is not defined","duration_ms":2143}}
+{"time":"2026-03-19 21:07:03","message":"EVENT_ERROR","error":{"processId":128,"room":null,"device":"main","action":"toggle","error":"status is not defined","duration_ms":1171}}
+{"time":"2026-03-19 21:07:55","message":"EVENT_ERROR","error":{"processId":129,"room":"master","device":"main","action":"toggle","error":"status is not defined","duration_ms":4527}}
+{"time":"2026-03-19 21:07:59","message":"EVENT_ERROR","error":{"processId":130,"room":"master","device":"main","action":"toggle","error":"status is not defined","duration_ms":2212}}
+{"time":"2026-03-19 21:08:02","message":"EVENT_ERROR","error":{"processId":131,"room":null,"device":"main","action":"toggle","error":"status is not defined","duration_ms":1936}}
+{"time":"2026-03-19 21:08:06","message":"EVENT_ERROR","error":{"processId":132,"room":null,"device":"main","action":"toggle","error":"status is not defined","duration_ms":2963}}
+{"time":"2026-03-19 21:13:51","message":"EVENT_ERROR","error":{"processId":133,"room":"master","device":"main","action":"toggle","error":"status is not defined","duration_ms":2666}}
+{"time":"2026-03-19 21:13:56","message":"EVENT_ERROR","error":{"processId":134,"room":null,"device":"main","action":"toggle","error":"status is not defined","duration_ms":1753}}
+{"time":"2026-03-19 21:13:59","message":"EVENT_ERROR","error":{"processId":135,"room":null,"device":"main","action":"toggle","error":"status is not defined","duration_ms":1815}}
+{"time":"2026-03-19 21:14:04","message":"EVENT_ERROR","error":{"processId":136,"room":null,"device":"main","action":"toggle","error":"status is not defined","duration_ms":1997}}
+{"time":"2026-03-19 21:14:07","message":"EVENT_ERROR","error":{"processId":137,"room":null,"device":"main","action":"toggle","error":"status is not defined","duration_ms":1658}}
+{"time":"2026-03-19 21:14:10","message":"EVENT_ERROR","error":{"processId":138,"room":null,"device":"main","action":"toggle","error":"status is not defined","duration_ms":1870}}
+{"time":"2026-03-19 21:19:52","message":"EVENT_ERROR","error":{"processId":139,"room":"master","device":"main","action":"toggle","error":"status is not defined","duration_ms":3063}}

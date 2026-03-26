@@ -1,0 +1,19 @@
+{
+    "k3y-master-door": {
+        "room": "master",
+        "profile": "basic"
+    },
+    "k3y-master-bed": {
+        "room": "master",
+        "profile": "admin"
+    },
+    "k3y-laundry-room": {
+        "room": "laundry",
+        "profile": "basic"
+    },
+    "k3y-kitchen-room": {
+        "room": "kitchen",
+        "profile": "basic"
+    }
+    
+}

@@ -1,0 +1,25 @@
+{
+    "master": {
+        "basic": [
+            "main-light-1",
+            "main-light-2",
+            "main-light-3"
+        ],
+        "admin": [
+            "main-light-1",
+            "main-light-2",
+            "main-light-3"
+        ]
+    
+    },
+    "kitchen": {
+        "basic":[
+            "main-light"
+        ]
+    },
+    "laundry": {
+        "basic":[
+            "main-light"
+        ]
+    }
+}

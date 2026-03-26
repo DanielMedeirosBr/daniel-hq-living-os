@@ -1,0 +1,11 @@
+{
+    "master": {
+        "lights": ["lamp1", "lamp2", "lamp3"]
+    },
+    "kitchen": {
+        "lights": ["lamp4"]
+    },
+    "laundry": {
+        "lights": ["lamp5"]
+    }
+}

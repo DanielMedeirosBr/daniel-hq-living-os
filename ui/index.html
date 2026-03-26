@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel HQ</title>
+
+<style>
+
+body {
+  margin: 0;
+  background: #050505;
+  font-family: Arial;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+/* MIRROR */
+
+.mirror {
+  width: 100%;
+  aspect-ratio: 72 / 120;
+
+  background-image: url("/ui/mirror.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+.mirror::after {
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 8px;
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+
+  box-shadow:
+    inset 0 0 5px rgba(0, 207, 255, 0.8),
+    inset 0 0 10px rgba(0, 207, 255, 0.5),
+    inset 0 0 15px rgba(0, 207, 255, 0.3);
+}
+
+.mirror.on::after {
+  opacity:1;
+}
+
+/* CAMADAS */
+
+.layer {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.12s ease;
+
+  z-index: 0; /* 👈 importante */
+}
+
+.layer.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10; /* 👈 ativo sempre na frente */
+
+}
+/* STANDBY */
+
+#home {
+  z-index: 20;
+}
+
+#standby {
+  font-size: 40px;
+  opacity: 0.3;
+}
+
+/* LOCK */
+
+#lock {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.clock {
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+
+.sub {
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+/* HOME */
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BOTÃO */
+
+.logo-btn {
+  width: 35%;
+  max-width: 200px;
+
+  opacity: 0.3;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logo-btn.on {
+  opacity: 1;
+  filter: drop-shadow(0 0 3px rgba(0, 207, 255, 0.9))
+          drop-shadow(0 0 6px rgba(0, 207, 255, 0.6));
+}
+
+.logo-btn.off {
+  filter: grayscale(100%);
+}
+
+.logo-btn:active {
+  transform: scale(0.9);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1 id="title">ROOM</h1>
+
+  <div id="mirror" class="mirror">
+
+    <div id="standby" class="layer active"></div>
+
+    <div id="lock" class="layer">
+      <div class="clock" id="clock">--:--</div>
+      <div class="sub">toque para entrar</div>
+    </div>
+
+    <div id="home" class="layer"></div>
+
+  </div>
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================================================
+     🧠 CONTROLE DE TELAS (STANDBY / LOCK / HOME)
+     ========================================================= */
+
+  const state = { current: null }
+
+  function setState(next) {
+
+    // Remove todas as camadas ativas
+    document.querySelectorAll(".layer").forEach(layer => {
+      layer.classList.remove("active")
+      layer.style.pointerEvents = "none"
+    })
+
+    // Ativa apenas a camada desejada
+    const el = document.getElementById(next)
+    if (el) {
+      el.classList.add("active")
+      el.style.pointerEvents = "auto"
+    }
+
+    state.current = next
+  }
+
+  /* =========================================================
+     ⏰ RELÓGIO (LOCK SCREEN)
+     ========================================================= */
+
+  function updateClock() {
+    const clockEl = document.getElementById("clock")
+    if (!clockEl) return
+
+    const now = new Date()
+    const h = String(now.getHours()).padStart(2, "0")
+    const m = String(now.getMinutes()).padStart(2, "0")
+
+    clockEl.innerText = `${h}:${m}`
+  }
+
+  setInterval(updateClock, 1000)
+  updateClock()
+
+  /* =========================================================
+     📍 IDENTIFICAÇÃO DA ROOM (URL)
+     ========================================================= */
+
+  const pathParts = window.location.pathname.split("/").filter(Boolean)
+  const room = pathParts[pathParts.length - 1]
+
+  const title = document.getElementById("title")
+  if (title) title.innerText = room.toUpperCase()
+
+  const mirror = document.getElementById("mirror")
+  const homeLayer = document.getElementById("home")
+
+  const params = new URLSearchParams(window.location.search)
+  const autoToggle = params.get("toggle")
+
+  /* =========================================================
+     🧠 CONTROLE DE CONCORRÊNCIA (ANTI-BUG)
+     ========================================================= */
+
+  // Cada request recebe um ID único
+  let requestId = 0
+
+  async function fetchRoomState() {
+
+    const currentId = ++requestId
+
+    const res = await fetch(`/room/${room}`)
+    const data = await res.json()
+
+    // Se chegou atrasado, ignora (evita sobrescrever UI)
+    if (currentId !== requestId) return null
+
+    return data.devices || []
+  }
+
+  /* =========================================================
+     🧠 ESPERA ESTADO REAL MUDAR (ESSENCIAL)
+     ========================================================= */
+
+  async function waitForStateChange(previousState, timeout = 5000) {
+
+    const start = Date.now()
+
+    let delay = 80 // 🔥 começa MUITO rápido
+
+    while (Date.now() - start < timeout) {
+
+      const devices = await fetchRoomState()
+      if (!devices) continue
+
+      const currentState = devices
+        .filter(d => d.type === "device")
+        .some(d => d.state === true || d.state === "true")
+
+      if (currentState !== previousState) {
+        return devices
+      }
+
+      // 🔥 aumenta gradualmente (backoff leve)
+      await new Promise(r => setTimeout(r, delay))
+      delay = Math.min(delay + 40, 300)
+    }
+
+    return await fetchRoomState()
+  }
+
+  /* =========================================================
+     🎨 RENDER DA UI
+     ========================================================= */
+
+  function render(devices) {
+
+    if (!devices) return
+
+    // Limpa a tela
+    homeLayer.innerHTML = ""
+
+    const overlay = document.createElement("div")
+    overlay.className = "overlay"
+
+    const group = devices.find(d => d.type === "group")
+    if (!group) return
+
+    // 🔥 Estado REAL (não inventa nada)
+    const isOn = devices
+      .filter(d => d.type === "device")
+      .some(d => d.state === true || d.state === "true")
+
+    const btn = document.createElement("img")
+    btn.src = "/ui/logoClean.png"
+    btn.className = `logo-btn ${isOn ? "on" : "off"}`
+
+    /* =========================================================
+       🔁 CLICK → TOGGLE REAL (SEM ADIVINHAR ESTADO)
+       ========================================================= */
+
+    btn.onclick = async () => {
+
+      btn.style.pointerEvents = "none"
+
+      // 🔥 1. estado atual REAL
+      const previousState = isOn
+
+      // 🔥 2. UI responde NA HORA (melhora UX)
+      const optimisticState = !previousState
+      btn.className = `logo-btn ${optimisticState ? "on" : "off"}`
+      mirror.classList.toggle("on", optimisticState)
+
+      try {
+        // 🔥 3. manda comando
+        await fetch(`/device/${group.id}/toggle?room=${room}`)
+
+        // 🔥 4. espera confirmação REAL (sem travar UI)
+        const updated = await waitForStateChange(previousState)
+
+        // 🔥 5. garante consistência final
+        render(updated)
+
+      } catch (err) {
+        console.error("Erro no toggle:", err)
+      }
+
+      btn.style.pointerEvents = "auto"
+    }
+
+    overlay.appendChild(btn)
+
+    // Glow acompanha estado real
+    mirror.classList.toggle("on", isOn)
+
+    homeLayer.appendChild(overlay)
+  }
+
+  /* =========================================================
+     🚀 INICIALIZAÇÃO DO SISTEMA (SPA)
+     ========================================================= */
+
+  async function init() {
+
+    // Se veio via NFC → executa primeiro
+    if (autoToggle) {
+      await fetch(`/device/${autoToggle}/toggle?room=${room}`)
+    }
+
+    // Sempre busca estado real
+    const devices = await fetchRoomState()
+
+    // Render inicial
+    render(devices)
+
+    // Fluxo visual
+    if (autoToggle) {
+      setState("home")
+    } else {
+      setState("standby")
+
+      setTimeout(() => {
+        setState("lock")
+      }, 300)
+    }
+  }
+
+  /* =========================================================
+     👆 INTERAÇÃO DO USUÁRIO (DESTRAVAR)
+     ========================================================= */
+
+  mirror.addEventListener("click", () => {
+    if (state.current === "lock") {
+      setState("home")
+    }
+  })
+
+  init()
+
+})
+
+</script>
+
+</body>
+</html>

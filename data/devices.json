@@ -1,0 +1,45 @@
+{
+    "master": {
+        "main": [
+            "main-light-1",
+            "main-light-2",
+            "main-light-3"
+        ],
+        
+        "main-light-1": {
+            "tuyaId": "eb7d0730fd1a7ddc59bdc8",
+            "state": true,
+            "connection": "lan"
+
+        },
+        "main-light-2": {
+            "tuyaId": "ebc9a1b7838cf95c60ym9x",
+            "state": true,
+            "connection": "lan"
+
+        },
+        "main-light-3": {
+            "tuyaId": "eb54913d4bb2547893ey4z",
+            "state": true,
+            "connection": "lan"
+
+        }
+    },
+    "kitchen": {
+        "main-light-1": {
+            "tuyaId": "ebd6271066c530dbb5ifro",
+            "state": true,
+            "connection": "lan"
+
+        }
+    },
+    "laundry": {
+        "main-light-1": {
+            "tuyaId": "ebd8b2f0042d0298096n6f",
+            "state": true,
+            "connection": "lan"
+
+        }
+    }
+
+}
