@@ -35,11 +35,11 @@ Instead of simple reactive automation, the system evolves towards a model where 
 
 ## Tech Stack
 
-- Python
-- MySQL / PostgreSQL
+- Node.js
+- JavaScrpit
+- HTML/CSS
 - APIs (REST)
 - Automation scripts
-- (Future) Node.js services
 - (Future) Docker
 
 ## Features
@@ -66,14 +66,16 @@ Instead of simple reactive automation, the system evolves towards a model where 
 - Reduce manual intervention
 - Build a scalable architecture
 
-## Getting Started
+## Preview
 
-```bash
-git clone https://github.com/DanielMedeirosBr/daniel-hq-living-os.git
-cd daniel-hq-living-os
-
+![System Output](./docs/output.jpeg)
 
 ## Status
 
 Active development – continuously evolving architecture and capabilities.
 
+## Getting Started
+
+```bash
+git clone https://github.com/DanielMedeirosBr/daniel-hq-living-os.git
+cd daniel-hq-living-os
