@@ -4,6 +4,9 @@
 Sistema de automação residencial com backend Node.js rodando em servidor Debian 24/7.
 
 Objetivo: criar um motor de automação doméstica modular com eventos, sensores, cenas e controle de dispositivos.
+
+Magic Home — “Tecnologia suficientemente avançada é indistinguível de magia.”
+
 ---
 
 ## Definições do projeto
@@ -295,6 +298,163 @@ Se você colar isso na próxima conversa, eu entro no contexto praticamente no m
 
 ---
 
+DEV_LOG — Magic Home (Smarthome Operation System)
+
+📅 Data
+
+29/03/2026
+
+---
+
+🧠 Definições de Arquitetura — Iluminação LED Endereçável
+
+🔧 Controladoras
+
+- Utilização de ESP32 como unidade de controle
+- Limite definido: máximo de 5 saídas (GPIOs) por ESP32
+- Distribuição modular por ambiente para garantir:
+  - estabilidade
+  - escalabilidade
+  - facilidade de manutenção
+
+---
+
+💡 Tipo de Fita LED
+
+- Padrão definido: WS2815 (12V, endereçável)
+
+- Justificativas:
+  
+  - compatível com infraestrutura 12V existente
+  - menor queda de tensão
+  - maior robustez para trechos de até ~7m
+  - ideal para segmentação física
+
+- Estratégia:
+  
+  - compra em volume (redução de custo)
+  - corte e customização manual conforme zonas
+
+---
+
+🧩 Segmentação
+
+- Cada zona será fisicamente independente
+
+- Regra:
+  
+  - ideal: até 5m
+  - aceitável: até 7m
+
+- Cada zona:
+  
+  - 1 linha de dados dedicada
+  - controle independente via GPIO
+
+---
+
+⚡ Alimentação
+
+- Arquitetura definida:
+  
+  - 1 fonte 12V por ambiente
+  - uso de infraestrutura 12V já existente
+  - suporte por 2 UPS centralizados
+
+- Observações:
+  
+  - distribuição inteligente será definida posteriormente
+  - possível uso de fontes auxiliares para cargas específicas (LED / spots)
+
+---
+
+🔌 Referência Elétrica
+
+- GND equipotencializado em todo o sistema
+- Obrigatório para:
+  - estabilidade do sinal
+  - evitar flicker e comportamento errático
+
+---
+
+🧯 Camada de Segurança / Controle Físico
+
+- Uso de Sonoff para:
+  
+  - corte de energia por ambiente
+  - fallback manual
+  - proteção e manutenção
+
+- NÃO utilizado para:
+  
+  - controle lógico de LEDs
+  - segmentação de zonas
+
+---
+
+🧵 Infraestrutura de Cabeamento
+
+- Padrão definido:
+  
+  - utilização de cabo CAT6 por ponto de LED
+
+- Benefícios:
+  
+  - 8 vias disponíveis por ponto
+  - flexibilidade para:
+    - dados
+    - alimentação auxiliar
+    - redundância futura
+    - expansão
+
+- Estrutura mínima por zona:
+  
+  - 1 fio → dados
+  - 2 fios → alimentação (V+ e GND)
+  - restante → reserva estratégica
+
+---
+
+🧠 Arquitetura de Controle
+
+- Sistema central: Magic SO (Smarthome Operation System)
+
+- Responsabilidades:
+  
+  - orquestração das zonas
+  - execução de cenas
+  - abstração da lógica
+
+- ESP32:
+  
+  - atuadores distribuídos (edge devices)
+  - execução de comandos recebidos
+
+---
+
+🔥 Princípios Consolidados
+
+- Separação clara entre:
+  
+  - energia
+  - dados
+  - lógica
+
+- Modularidade > centralização
+
+- Infraestrutura preparada para expansão futura
+
+- Independência de cloud (controle local)
+
+---
+
+🚀 Status
+
+✅ Arquitetura base definida
+✅ Pronto para planejamento físico e elétrica detalhada
+⏳ Próximo passo: diagrama elétrico + layout por ambiente
+
+---
 
 
 ## Próximos Passos
