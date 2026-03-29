@@ -1,4 +1,4 @@
-# Daniel HQ Living OS
+# Daniel HQ - Magic Home
 
 Autonomous home automation system focused on data-driven decisions, continuous adaptation, and operational independence.
 
