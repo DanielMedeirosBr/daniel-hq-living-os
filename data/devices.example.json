@@ -1,0 +1,13 @@
+{
+  "devices": [
+    {
+      "id": "DEVICE_ID",
+      "name": "Example Light",
+      "protocol": "tuya",
+      "local": {
+        "ip": "0.0.0.0",
+        "local_key": "YOUR_KEY_HERE"
+      }
+    }
+  ]
+}

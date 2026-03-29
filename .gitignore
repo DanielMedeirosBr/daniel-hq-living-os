@@ -1,5 +1,5 @@
 # Configurações sensíveis
-config/tuya/*.json
+data/devices.local.json
 config/*.json
 
 # Arquivos locais
