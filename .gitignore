@@ -1,0 +1,20 @@
+# Configurações sensíveis
+config/tuya/*.json
+config/*.json
+
+# Arquivos locais
+.env
+.env.local
+
+# Logs
+*.log
+
+# Backup / temporários
+*.zip
+*.bak
+
+# Node (se usar depois)
+node_modules/
+
+# VSCode (opcional)
+.vscode/
