@@ -1,0 +1,303 @@
+{
+  "devices": [
+    {
+      "meta": {
+        "name": "Elgin Smart Color",
+        "capability_id": "light.elgin.v3.3",
+        "protocol_version": "3.3",
+        "source": "tuya_api",
+        "collected_at": 1774829553864
+      },
+      "raw": {
+        "result": {
+          "properties": [
+            {
+              "code": "switch_led",
+              "custom_name": "",
+              "dp_id": 20,
+              "time": 1774541483837,
+              "type": "bool",
+              "value": false
+            },
+            {
+              "code": "work_mode",
+              "custom_name": "",
+              "dp_id": 21,
+              "time": 1774541483837,
+              "type": "enum",
+              "value": "white"
+            },
+            {
+              "code": "bright_value",
+              "custom_name": "",
+              "dp_id": 22,
+              "time": 1774541483837,
+              "type": "value",
+              "value": 10
+            },
+            {
+              "code": "temp_value",
+              "custom_name": "",
+              "dp_id": 23,
+              "time": 1774541483837,
+              "type": "value",
+              "value": 0
+            },
+            {
+              "code": "colour_data",
+              "custom_name": "",
+              "dp_id": 24,
+              "time": 1774541483837,
+              "type": "string",
+              "value": ""
+            },
+            {
+              "code": "scene_data",
+              "custom_name": "",
+              "dp_id": 25,
+              "time": 1774541483837,
+              "type": "string",
+              "value": ""
+            },
+            {
+              "code": "countdown",
+              "custom_name": "",
+              "dp_id": 26,
+              "time": 1774541483837,
+              "type": "value",
+              "value": 0
+            },
+            {
+              "code": "music_data",
+              "custom_name": "",
+              "dp_id": 27,
+              "time": 1774541483837,
+              "type": "string",
+              "value": ""
+            },
+            {
+              "code": "control_data",
+              "custom_name": "",
+              "dp_id": 28,
+              "time": 1774541483837,
+              "type": "string",
+              "value": ""
+            },
+            {
+              "code": "debug_data",
+              "custom_name": "",
+              "dp_id": 29,
+              "time": 1774541483837,
+              "type": "string",
+              "value": ""
+            },
+            {
+              "code": "rhythm_mode",
+              "custom_name": "",
+              "dp_id": 30,
+              "time": 1774541483837,
+              "type": "raw",
+              "value": null
+            },
+            {
+              "code": "sleep_mode",
+              "custom_name": "",
+              "dp_id": 31,
+              "time": 1774541483837,
+              "type": "raw",
+              "value": null
+            },
+            {
+              "code": "wakeup_mode",
+              "custom_name": "",
+              "dp_id": 32,
+              "time": 1774541483837,
+              "type": "raw",
+              "value": null
+            }
+          ]
+        },
+        "success": true,
+        "t": 1774829553864,
+        "tid": "266755292bcd11f1a7746af8e5b2ca1a"
+      },
+      "properties_indexed": {
+        "switch_led": { "dp_id": 20, "type": "bool" },
+        "work_mode": { "dp_id": 21, "type": "enum" },
+        "bright_value": { "dp_id": 22, "type": "value" },
+        "temp_value": { "dp_id": 23, "type": "value" },
+        "colour_data": { "dp_id": 24, "type": "string" }
+      }
+    },
+
+    {
+      "meta": {
+        "name": "Ekaza Smart Lamp",
+        "protocol_version": "3.5",
+        "capability_id": "light.ekaza.v3.5",
+        "source": "tuya_api",
+        "collected_at": 1774829617542
+      },
+      "raw": {
+        "result": {
+          "properties": [
+            {
+              "code": "switch_led",
+              "custom_name": "",
+              "dp_id": 20,
+              "time": 1774813044986,
+              "type": "bool",
+              "value": true
+            },
+            {
+              "code": "work_mode",
+              "custom_name": "",
+              "dp_id": 21,
+              "time": 1774660111795,
+              "type": "enum",
+              "value": "white"
+            },
+            {
+              "code": "bright_value",
+              "custom_name": "",
+              "dp_id": 22,
+              "time": 1774786007676,
+              "type": "value",
+              "value": 1000
+            },
+            {
+              "code": "temp_value",
+              "custom_name": "",
+              "dp_id": 23,
+              "time": 1774660111795,
+              "type": "value",
+              "value": 1000
+            },
+            {
+              "code": "colour_data",
+              "custom_name": "",
+              "dp_id": 24,
+              "time": 1774660111795,
+              "type": "string",
+              "value": "003c03e803e8"
+            },
+            {
+              "code": "scene_data",
+              "custom_name": "",
+              "dp_id": 25,
+              "time": 1774660111795,
+              "type": "string",
+              "value": "000e0d0000000000000000c80000"
+            },
+            {
+              "code": "countdown",
+              "custom_name": "",
+              "dp_id": 26,
+              "time": 1774660111795,
+              "type": "value",
+              "value": 0
+            },
+            {
+              "code": "music_data",
+              "custom_name": "",
+              "dp_id": 27,
+              "time": 1759931032792,
+              "type": "string",
+              "value": ""
+            },
+            {
+              "code": "control_data",
+              "custom_name": "",
+              "dp_id": 28,
+              "time": 1759931032792,
+              "type": "string",
+              "value": ""
+            },
+            {
+              "code": "debug_data",
+              "custom_name": "",
+              "dp_id": 29,
+              "time": 1759931032792,
+              "type": "string",
+              "value": ""
+            },
+            {
+              "code": "rhythm_mode",
+              "custom_name": "",
+              "dp_id": 30,
+              "time": 1774660112379,
+              "type": "raw",
+              "value": "AAAAAAA="
+            },
+            {
+              "code": "sleep_mode",
+              "custom_name": "",
+              "dp_id": 31,
+              "time": 1774660112669,
+              "type": "raw",
+              "value": "AAA="
+            },
+            {
+              "code": "wakeup_mode",
+              "custom_name": "",
+              "dp_id": 32,
+              "time": 1774660113001,
+              "type": "raw",
+              "value": "AAA="
+            },
+            {
+              "code": "power_memory",
+              "custom_name": "",
+              "dp_id": 33,
+              "time": 1774660113914,
+              "type": "raw",
+              "value": "AAEAPAPoA+gD6APo"
+            },
+            {
+              "code": "do_not_disturb",
+              "custom_name": "",
+              "dp_id": 34,
+              "time": 1774660111795,
+              "type": "bool",
+              "value": true
+            },
+            {
+              "code": "switch_gradient",
+              "custom_name": "",
+              "dp_id": 35,
+              "time": 1774660111808,
+              "type": "raw",
+              "value": "AAADIAADIA=="
+            },
+            {
+              "code": "cycle_timing",
+              "custom_name": "",
+              "dp_id": 209,
+              "time": 1774660113694,
+              "type": "raw",
+              "value": "AAAA"
+            },
+            {
+              "code": "random_timing",
+              "custom_name": "",
+              "dp_id": 210,
+              "time": 1774660113289,
+              "type": "raw",
+              "value": "AAAA"
+            }
+          ]
+        },
+        "success": true,
+        "t": 1774829617542,
+        "tid": "4c61bb712bcd11f18273767889c0ab83"
+      },
+      "properties_indexed": {
+        "switch_led": { "dp_id": 20, "type": "bool" },
+        "work_mode": { "dp_id": 21, "type": "enum" },
+        "bright_value": { "dp_id": 22, "type": "value" },
+        "temp_value": { "dp_id": 23, "type": "value" },
+        "colour_data": { "dp_id": 24, "type": "string" }
+      }
+    }
+  ]
+}

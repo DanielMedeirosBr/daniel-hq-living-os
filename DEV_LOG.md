@@ -457,6 +457,237 @@ DEV_LOG — Magic Home (Smarthome Operation System)
 ---
 
 
+# 🧠 Dev Log — MagicOS
+
+**Data:** 2026-03-29
+**Status:** Avanço crítico concluído
+**Resultado:** MagicOS 1 x 0 Tuya IoT Platform
+
+---
+
+## 🏆 Vitória do dia
+
+Hoje vencemos uma das barreiras mais importantes do sistema:
+
+✔ Extração completa dos `local_key` dos dispositivos
+✔ Mapeamento correto de dispositivos reais
+✔ Entendimento profundo das diferenças entre:
+
+* dispositivos Elgin (3.3)
+* dispositivos Ekaza (3.5)
+
+👉 Isso destrava o controle local dos devices e reduz a dependência da nuvem da Tuya.
+
+---
+
+## 🧩 Decisões arquiteturais tomadas
+
+### 1. 📦 Separação de responsabilidades
+
+O sistema agora está dividido em:
+
+* **devices.json**
+
+  * identifica tipo de dispositivo
+  * contém referência via `capability_id`
+
+* **capabilities**
+
+  * define comportamento do device
+  * contém todos os `codes`, `dp_id`, `type`, etc
+
+* **state**
+
+  * tempo real
+  * sem poluição estrutural
+
+* **logs**
+
+  * histórico e observabilidade
+
+👉 Resultado: estrutura limpa, previsível e escalável.
+
+---
+
+### 2. 🔗 Ligação por `capability_id`
+
+Decisão importante:
+
+✔ O vínculo entre device e comportamento será feito via `capability_id`
+
+👉 Isso elimina:
+
+* dependência de IDs dinâmicos da Tuya
+* acoplamento com API externa
+* ambiguidade de modelo
+
+---
+
+### 3. 📉 Remoção de complexidade desnecessária
+
+Decisões estratégicas:
+
+* ❌ Não usar `min/max` nas capabilities (por enquanto)
+* ❌ Não misturar timestamps dentro do device
+* ❌ Não depender de estrutura rígida da Tuya
+
+✔ Foco em:
+
+* simplicidade
+* lógica própria
+* evolução controlada
+
+---
+
+### 4. 🎯 Modelo mental adotado
+
+O MagicOS agora segue o paradigma:
+
+> **Sistema central controla os dispositivos — dispositivos apenas executam comandos**
+
+Isso abre caminho para:
+
+* controle total local
+* baixa latência
+* independência da nuvem
+* comportamento customizado
+
+---
+
+## 🧪 Estado atual do sistema
+
+✔ Local keys obtidas
+✔ Dispositivos identificados
+✔ Capabilities modeladas
+✔ Estrutura de dados organizada
+✔ Base pronta para controle local
+
+👉 Ainda falta:
+
+* comunicação direta MagicOS → dispositivos
+* camada de execução (driver)
+* integração em tempo real
+
+---
+
+## ⚠️ Pontos de atenção
+
+### 1. 📶 Controle em tempo real
+
+Quando começar a enviar comandos:
+
+* respeitar limites de envio
+* evitar sobrecarga de rede
+* aplicar suavização de valores
+
+---
+
+### 2. 🧠 Complexidade futura
+
+O sistema já está no caminho de evoluir para:
+
+* processamento de áudio em tempo real
+* automação baseada em eventos
+* orquestração de múltiplos dispositivos
+
+👉 Isso exige cuidado com:
+
+* performance
+* latência
+* consistência de estado
+
+---
+
+## 🚀 Próximos passos (prioridade alta)
+
+### 1. 🔌 Integração local com dispositivos
+
+Objetivo:
+
+* conectar diretamente com as lâmpadas
+* sem depender da cloud
+
+👉 Usar:
+
+* `local_key`
+* `device_id`
+* protocolo local da Tuya
+
+---
+
+### 2. ⚙️ Criar o “driver” de dispositivos
+
+Camada responsável por:
+
+* enviar comandos
+* interpretar capabilities
+* abstrair diferenças entre modelos
+
+---
+
+### 3. 🎛️ Sistema de controle central
+
+* 1 comando → 1 comportamento
+* normalização de valores
+* tradução de intenção → ação
+
+---
+
+### 4. 🎵 Base para modo música
+
+Preparação:
+
+* pipeline de áudio
+* leitura de frequência
+* mapeamento inicial para efeitos
+
+👉 Sem acoplamento direto com dispositivos ainda
+
+---
+
+## 🧭 Visão geral
+
+Hoje saímos de:
+
+❌ Dependência da Tuya
+❌ Dúvidas de arquitetura
+❌ Falta de controle dos dispositivos
+
+Para:
+
+✅ Sistema estruturado
+✅ Base pronta para controle local
+✅ Modelo mental definido
+✅ Capacidade de evolução clara
+
+---
+
+## 🔥 Conclusão
+
+Hoje foi um dia decisivo.
+
+O MagicOS deixou de ser apenas uma ideia e passou a ter:
+
+> **estrutura, identidade e direção**
+
+Agora o foco muda completamente:
+
+👉 de **decidir como extrair dados**
+👉 para **fazer o sistema agir no mundo real**
+
+---
+
+## ➡️ Próximo checkpoint
+
+Quando voltarmos:
+
+* MagicOS falando com os dispositivos
+* primeiro comando real enviado localmente
+* validação do pipeline completo
+
+---
+
+
 ## Próximos Passos
 
 Implementar automações baseadas em eventos.
