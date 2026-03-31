@@ -1,5 +1,4 @@
-Perfeito — vou subir isso de nível pra algo que parece arquitetura de produto real + engenharia séria. Estruturei como DEV_LOG + ARCH + CHANGELOG + ROADMAP, no padrão que empresa usa.
-Markdown
+
 # 🧠 MagicOS — Home Automation System
 **Author:** Daniel HQ  
 **Version:** v0.1-alpha  
