@@ -1,52 +1,362 @@
-​Daniel HQ — Development Log 03/26/25
-​Project
-​Home automation system with a Node.js backend running on a 24/7 Debian server.
-​Objective: Create a modular home automation engine with events, sensors, scenes, and device control.
-​Magic Home: "Any sufficiently advanced technology is indistinguishable from magic."
-​Project Definitions
-​2026/03/19: The main idea is to map the relationship between physical space and human intention.
-​2026/03/19: Room is the smallest spatial unit with its own identity, capable of interpreting and reacting to intentions.
-​Current Infrastructure
-​Master (Dev): Windows | VS Code | Remote SSH
-​Server (Runtime): Debian | IP: 192.168.1.17 | Node.js managed by PM2
-​Project Structure: controllers/, core/, data/, routes/, services/, state/, ui/
-​Architectural Components
-​EventBus: Internal event system for inter-module communication.
-​HouseEngine: The core orchestrator managing sensors, devices, and automations.
-​LogEngine: Centralized logging and history system.
-​State: Persists states for presence, sensors, rooms, scenes, and energy.
-​Technical Decisions & Evolution
-​2026/03/19 — New Organization
-​The deviceRegistry now resolves identity (room + device).
-Flow: API → EventBus → HouseEngine → DeviceService → TuyaService → Device → LogEngine (Narrative)
-​Functional UI with light toggles and On/Off animations.
-​High-end interface tested and functional.
-​Codebase refactored: tuyaService.js, houseEngine.js, server.js, etc.
-​2026/03/20 — System Status Summary
-​Truth Source: Tuya remains the "source of truth" while the Server acts as the Observer + Orchestrator.
-​Access Model: Based on physical context (NFC Tags + Room URL). Roles: Guest, User, Admin.
-​Insight: It’s not just automation; it’s a system that models the house to provide contextual control.
-​2026/03/29 — Addressable LED Architecture
-​Hardware: ESP32 (Max 5 GPIOs per unit).
-​LED Type: WS2815 (12V) for robustness and low voltage drop.
-​Wiring: CAT6 cables (8 wires for data, power redundancy, and future expansion).
-​Safety: Sonoff units used for physical power cut/maintenance, not logic.
-​MagicOS Dev Log — The "Tuya Victory"
-​Status: Critical Breakthrough. Result: MagicOS 1 x 0 Tuya IoT Platform.
-​Key Achievements:
-​Local Control: Extracted all local_key values, enabling local execution and reducing cloud dependency.
-​Capability-Based Linking: Devices are now linked via capability_id, eliminating reliance on dynamic Tuya IDs.
-​Equipotential GND: Mandatory for signal stability across the 12V infra.
-​Future UI/UX Vision (Room-Oriented):
-​The interface will respond to proximity/sensors:
-​Standby: Black background, clock at 0.3 opacity.
-​Proximity: Screen wakes to lock state.
-​Functional: Full menu access.
-​Narrative: High-interaction state for AI/Assistant engagement.
-​Next Steps (Priorities)
-​Local Driver: Establish direct communication with bulbs using local_key and Tuya local protocol.
-​Event Standardization: Implement standard naming conventions:
-​device.action, presence.detected, power.grid.lost.
-​Automation Rules: Introduce presenceRules.js and energyRules.js.
-​Music Mode: Build the audio pipeline for real-time frequency mapping to LEDs.
-​
+Perfeito — vou subir isso de nível pra algo que parece arquitetura de produto real + engenharia séria. Estruturei como DEV_LOG + ARCH + CHANGELOG + ROADMAP, no padrão que empresa usa.
+Markdown
+# 🧠 MagicOS — Home Automation System
+**Author:** Daniel HQ  
+**Version:** v0.1-alpha  
+**Last Update:** 2026-03-26  
+
+---
+
+# 📌 1. Overview
+
+MagicOS is a modular home automation system designed to map **physical space → human intention → system response**.
+
+It is not just automation — it is a **context-aware orchestration engine**.
+
+---
+
+# 🎯 2. Core Philosophy
+
+> "Any sufficiently advanced technology is indistinguishable from magic."
+
+### Principles:
+
+- Context > Commands  
+- Presence > Interaction  
+- Intention > Interface  
+- System acts as an **observer before controller**
+
+---
+
+# 🏗️ 3. System Architecture
+
+## 3.1 High-Level Flow
+[Client/API] ↓ [EventBus] ↓ [HouseEngine] ↓ [Services Layer] ↓ [Devices / Integrations] ↓ [LogEngine]
+
+---
+
+## 3.2 Core Components
+
+### 🧩 EventBus
+- Internal async communication layer
+- Decouples modules
+- Enables event-driven architecture
+
+---
+
+### 🧠 HouseEngine
+- Central orchestrator
+- Resolves:
+  - rooms
+  - devices
+  - sensors
+  - automations
+
+---
+
+### 📦 DeviceRegistry
+- Resolves identity:
+room + device → unique mapping
+
+---
+
+### 🔌 Services Layer
+
+- DeviceService
+- TuyaService
+- Future: LocalDeviceService
+
+---
+
+### 🧾 LogEngine
+- Narrative-based logging
+- Tracks:
+- actions
+- state changes
+- events timeline
+
+---
+
+### 💾 State Engine
+
+Persists:
+
+- presence
+- sensors
+- rooms
+- scenes
+- energy
+
+---
+
+# 🖥️ 4. Infrastructure
+
+## Development
+
+- Windows
+- VS Code
+- Remote SSH
+
+## Runtime
+
+- Debian Server (24/7)
+- IP: 192.168.1.17
+- Node.js
+- PM2 process manager
+
+---
+
+## Project Structure
+controllers/ core/ data/ routes/ services/ state/ ui/
+
+---
+
+# 🔌 5. Hardware Layer
+
+## LED Architecture
+
+- **Controller:** ESP32  
+- **Limit:** 5 GPIOs per unit  
+
+- **LED Type:** WS2815 (12V)
+  - Lower voltage drop
+  - Higher robustness
+
+- **Wiring:** CAT6
+  - Data
+  - Power redundancy
+  - Expansion-ready
+
+---
+
+## ⚠️ Safety Model
+
+- Sonoff devices:
+  - Used ONLY for power isolation
+  - NOT part of logic layer
+
+---
+
+## 🔋 Electrical Rule
+
+- Equipotential GND is mandatory across all 12V systems
+
+---
+
+# 🔗 6. Integration Model
+
+## Tuya (Current)
+
+### Role:
+- Source of Truth
+
+### Server Role:
+- Observer
+- Orchestrator
+
+---
+
+## 🔥 Breakthrough — "Tuya Victory"
+
+**Status:** Achieved
+
+### Achievements:
+
+- ✔ Extracted `local_key` → local control enabled  
+- ✔ Removed dependency on cloud latency  
+- ✔ Capability-based linking (`capability_id`)  
+- ✔ Abstracted dynamic device IDs  
+
+---
+
+## 🔜 Next Integration Step
+
+### Local Driver
+
+Goal:
+- Fully bypass Tuya Cloud
+
+Using:
+- local_key
+- Tuya Local Protocol
+
+---
+
+# 🧠 7. Context & Access Model
+
+## Access Logic
+
+Based on:
+
+- NFC Tags
+- Room URL
+- Presence detection
+
+---
+
+## Roles
+
+- Guest
+- User
+- Admin
+
+---
+
+## Key Insight
+
+System does not respond to commands.
+
+It responds to:
+Context + Presence + Intent
+
+---
+
+# 🎨 8. UI/UX Architecture
+
+## Interface States
+
+### 💤 Standby
+- Black screen
+- Clock (opacity 0.3)
+
+---
+
+### 👀 Proximity
+- Wake screen
+- Locked state
+
+---
+
+### ⚙️ Functional
+- Full control UI
+
+---
+
+### 🤖 Narrative Mode
+- High interaction
+- AI/Assistant engagement
+- Context-aware responses
+
+---
+
+# 📡 9. Event System Standard
+
+## Naming Convention
+device.action presence.detected power.grid.lost room.entered scene.activated
+
+---
+
+## Event Philosophy
+
+- Everything is an event
+- No direct calls between modules
+- Fully decoupled system
+
+---
+
+# 🤖 10. Automation Engine
+
+## Planned Modules
+
+### presenceRules.js
+- Human movement logic
+- Room activation
+
+### energyRules.js
+- Power optimization
+- Load balancing
+
+---
+
+## Future:
+
+- Predictive automation
+- Behavioral learning
+
+---
+
+# 🎵 11. Experimental Features
+
+## Music Mode
+
+Goal:
+- Real-time audio → LED mapping
+
+Pipeline:
+Audio Input → FFT → Frequency Bands → LED Mapping
+
+---
+
+# 📜 12. CHANGELOG
+
+## v0.1-alpha — 2026-03-26
+
+### Added
+- Core architecture (EventBus + HouseEngine)
+- DeviceRegistry
+- Tuya integration
+- Logging system
+- Initial UI (light controls)
+
+### Improved
+- Codebase refactor:
+  - tuyaService.js
+  - houseEngine.js
+  - server.js
+
+### Defined
+- Event flow
+- Context model
+- Room abstraction
+
+---
+
+## v0.2 (Planned)
+
+- Local device driver
+- Event standardization
+- Automation rules engine
+- Improved state persistence
+
+---
+
+# 🗺️ 13. ROADMAP
+
+## Phase 1 — Foundation ✅
+- Core architecture
+- Cloud integration (Tuya)
+- UI basic control
+
+---
+
+## Phase 2 — Independence 🚧
+- Local control (no cloud)
+- Event standardization
+- Rule engine
+
+---
+
+## Phase 3 — Intelligence 🔮
+- Context awareness
+- Predictive automation
+- Behavior learning
+
+---
+
+## Phase 4 — Experience ✨
+- Narrative UI
+- Ambient intelligence
+- Invisible interfaces
+
+---
+
+# 🧬 Final Insight
+
+MagicOS is evolving from:
+Home Automation → Context Engine → Digital Organism
+
+The goal is not control.
+
+The goal is:
+
+> A system that understands the house as a living extension of its inhabitants.
